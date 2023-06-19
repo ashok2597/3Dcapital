@@ -1,0 +1,582 @@
+/*
+Theme Name: 3D Capital
+Theme URI: https://github.com/WordPress/capital_theme
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Description: A new Gutenberg-ready theme.
+Requires at least: WordPress 4.9.6
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: capital_theme
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+3D Capital is based on Underscores https://underscores.me/, (C) 2012-2018 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Variables
+# Normalize
+# Typography
+	## Headings
+	## Copy
+# Elements
+	## Lists
+	## Tables
+# Forms
+	## Buttons
+	## Fields
+# Navigation
+	## Links
+	## Menus
+	## Next & Previous
+# Accessibility
+# Alignments
+# Clearings
+# Layout
+# Widgets
+# Content
+	## Archives
+	## Posts and pages
+	## Comments
+# Blocks
+# Media
+	## Captions
+	## Galleries
+--------------------------------------------------------------*/
+/*
+ * Chrome renders extra-wide &nbsp; characters for the Hoefler Text font.
+ * This results in a jumping cursor when typing in both the Classic and block
+ * editors. The following font-face override fixes the issue by manually inserting
+ * a custom font that includes just a Hoefler Text space replacement for that
+ * character instead.
+ */
+
+ @font-face {
+    font-family: 'acumin_proregular';
+    src: url('./fonts/acumin_pro_book-webfont.eot');
+    src: url('./fonts/acumin_pro_book-webfont.woff2') format('woff2'),
+         url('./fonts/acumin_pro_book-webfont.woff') format('woff'),
+         url('./fonts/acumin_pro_book-webfont.ttf') format('truetype'),
+         url('./fonts/acumin_pro_book-webfont.svg#acumin_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'acumin_promedium';
+    src: url('./fonts/acumin_pro_medium-webfont.eot');
+    src: url('./fonts/acumin_pro_medium-webfont.woff2') format('woff2'),
+         url('./fonts/acumin_pro_medium-webfont.woff') format('woff'),
+         url('./fonts/acumin_pro_medium-webfont.ttf') format('truetype'),
+         url('./fonts/acumin_pro_medium-webfont.svg#acumin_promedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'acumin_prosemibold';
+    src: url('./fonts/acumin_pro_semibold-webfont.eot');
+    src: url('./fonts/acumin_pro_semibold-webfont.woff2') format('woff2'),
+         url('./fonts/acumin_pro_semibold-webfont.woff') format('woff'),
+         url('./fonts/acumin_pro_semibold-webfont.ttf') format('truetype'),
+         url('./fonts/acumin_pro_semibold-webfont.svg#acumin_prosemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+body { padding:0; margin: 0; background-color: #282828; font-family: 'acumin_proregular'; font-weight: normal; color: #282828; font-size: 24px; line-height: 36px; }
+
+
+.opacity8 { opacity: 0.8; }
+
+p { padding: 0; margin: 0; }
+.stylelist ul, ul.stylelist { margin: 10px 0; padding: 0 0 0 44px; }
+.stylelist ul li, ul.stylelist li  { list-style: none; padding: 8px 0; position: relative; }
+.stylelist ul li:before, ul.stylelist li:before  { content: ""; width: 4px; height: 4px; background: rgba(255,255,255,0.8); position: absolute; top: 21px; left: -20px; }
+
+h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding: 0; margin: 0; font-family: 'acumin_prosemibold'; font-weight: normal; }
+
+h1 { font-size: 48px; }
+h2 { font-size: 48px; }
+h3 { font-size: 32px; }
+h4 { font-size: 26px; }
+h5 { font-size: 22px; }
+h6 { font-size: 18px; }
+
+* + h1, * + h2 { margin-top:35px; }
+* + h3, * + h4 { margin-top:30px; }
+ * + h5, * + h6  { margin-top:25px; }
+* + p { margin-top:20px }
+
+* { box-sizing: border-box;  }
+.clearfix { display:block; }
+.clearfix:before,.clearfix:after { content:''; width:100%; display:table; }
+
+img { max-width:100%; height:auto; border:none; vertical-align:middle; }
+a { text-decoration:none; color:#000000; transition:all ease 0.3s; -webkit-transition:all ease 0.3s; }
+.whitefont { color: #FFFFFF; }
+
+.wrapper { max-width: 1560px; margin: auto; }
+
+.button a { position: relative; display: inline-block; font-family: 'Poppins', sans-serif; font-weight: 500; background: #FFFFFF; border: 1px solid #fff; padding: 22px 44px; border-radius: 8px 24px 8px 8px; font-weight: 500; font-size: 24px; line-height: 36px; color: #141414; }
+.button a:hover { background: transparent; color: #fff;  }
+.button a:after { z-index:-1; content: ""; position: absolute; width: 103.12%; height: 122.5%; border: 1px solid #fff; left: -10px; top: -10px; border-radius: 8px 24px 8px 8px; }
+
+/* Tabbing Section Css */
+.TabbingSection { padding-bottom: 158px; padding-top: 35px; }
+ul.tab-mnu { margin: 0; padding: 0 5%; }
+ul.tab-mnu li { margin: 0 14px; color: #FFFFFF; font-weight: 600; font-size: 32px; line-height: 38px; list-style: none; display: inline-block; width: 31%; text-align: center; padding: 30px; cursor: pointer; }
+
+.tab-pane { background: #FFFFFF; border-radius: 8px; padding: 80px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 80px; }
+.TabbLeft, .TabbRight { width: calc(50% - 44px); }
+
+ul.tab-mnu li.active { background: #FFFFFF; border-radius: 8px 8px 0px 0px; color: #282828; position: relative; }
+ul.tab-mnu li.active:after { content: ""; background: #D2D2D2; border-radius: 8px 8px 0px 0px; width: 100%; height: 100%; position: absolute; right: -12px; top: 0; z-index: -1; }
+.TabbLeft p { color: #282828; opacity: 0.8; }
+.TabbLeft ul { margin: 0; padding: 0; }
+.TabbLeft ul li { font-family: 'acumin_promedium'; padding: 0 0 0 40px; margin: 0; color: #282828; list-style: none; position: relative; }
+.TabbLeft ul li:after { content: ""; left: 14px; top: 16px; width: 4px; background: #282828; height: 4px; position: absolute; }
+
+ul.tab-mnu li.active span.iconWhite { display: none; }
+ul.tab-mnu li.active span.iconBlack { display: inline-block; vertical-align: bottom; padding-right: 8px;}
+ul.tab-mnu li span.iconBlack { display: none; }
+ul.tab-mnu li span.iconWhite { display: inline-block; vertical-align: bottom; padding-right: 8px; }
+
+.TabbingSection .button { text-align: center; padding-top: 80px; }
+.tab-cont { padding-right: 10px; padding-bottom: 10px; position: relative; }
+.tab-cont:after { content: ""; background: #D2D2D2; border-radius: 8px; width: 100%; height: 100%; right: 0; bottom: 0; position: absolute; z-index: -1; }
+
+/* Produces Returns Section Css */
+.Produces_Returns { padding-top: 160px; border-top: 1px solid #FFFFFF; padding-bottom: 160px; }
+
+.SectionHeading h2 span { display: inline-block; vertical-align: bottom; padding: 0 15px; }
+.SectionHeading { text-align: center; max-width: 80%; margin: auto; padding-bottom: 80px; }
+.SectionHeading p { margin-top: 47px; }
+
+.Produces_Returns_inner { display: flex; justify-content: center; flex-wrap: wrap; gap: 50px; }
+.Produces_Returns_box { width: calc(25% - 40px); position: relative; }
+.Produces_Returns_box:nth-child(even) { padding-top: 226px; }
+.Produces_Returns_box .Content h6 { font-weight: 600; font-size: 24px; line-height: 36px; color: #FFFFFF; position: relative; }
+.Produces_Returns_box .Content h6:after { position: absolute; content: ""; height: 4px; width: 151px; background: #fff; border-radius: 4px; left: 0; bottom: -18px; }
+.Produces_Returns_box .Content p { margin-top: 32px; }
+
+.Content { padding-top: 80px; }
+.StepNumber { margin-left: -17px; margin-bottom: -33px; }
+.Produces_Returns_box:after { content: ""; left: 48%; top: 31%; width: 100%; height: 12px; background: #fff; position: absolute; transform: skewY(32deg); z-index: -1; }
+.Produces_Returns_box:nth-child(even):after { transform: skewY(-30deg); top: 26%; }
+.Produces_Returns_box:last-child:after { content: none; }
+.Produces_Returns_box:nth-child(even) .StepNumber { margin-left: 22px; margin-bottom: -20px; }
+
+/* Team Section Start */
+.teamSection { background: #ffffff; padding: 40px 0 80px; }
+
+.TeamBox { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; border-bottom: 1px solid #282828; padding: 40px 0; }
+.TeamMemberimg { width: 25.32%; }
+.TeamMemberDetails { width: 74.67%; padding-left: 40px; box-sizing: border-box; }
+.NamePosition { border-left: 6px solid #282828; padding: 3px 0 3px 10px; font-family: 'acumin_promedium'; font-weight: normal; }
+.NamePosition h3 { margin-bottom: 15px; }
+.TeamEmail { border-left: 6px solid #282828; padding-left: 10px; margin-top: 20px; margin-bottom: 34px; font-family: 'acumin_promedium'; font-weight: normal; }
+.TeamEmail a { font-family: 'acumin_prosemibold'; font-size: 20px; color: #282828; border-bottom: 2px solid transparent; }
+.TeamEmail a:hover { border-bottom-color: #282828; }
+
+.TeamBox:nth-child(even) { direction: rtl; }
+.TeamBox:nth-child(even) .TeamMemberDetails { padding-left: 0; padding-right: 40px; }
+.TeamBox:nth-child(even) .NamePosition { border-left: 0; border-right: 6px solid #282828; padding-left: 0; padding-right: 10px; }
+.TeamBox:nth-child(even) .TeamEmail { border-left: 0; border-right: 6px solid #282828; padding-left: 0; padding-right: 10px; }
+
+.TeamBox:nth-child(even) .Detail { text-align: right; direction: initial; }
+.TeamMemberDetails .Detail p { font-family: 'acumin_promedium';  }
+
+/* Management Strategies Css */
+.ManagementStrategies { padding: 160px 0; }
+.TwoColumn { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-right: 10px;  }
+.TwoColumn_Content { width: 38.46%; padding-right: 80px; }
+.TwoColumn_img { width: 61.53%; position: relative; }
+.TwoColumn_img img { border-radius: 8px; }
+.TwoColumn_img:after { background: #D2D2D2; border-radius: 8px; content: ""; position: absolute; width: calc(100% + 10px); height: calc(100% + 10px); right: -10px; bottom: -10px; display: block; z-index: -1; }
+
+.TableDetails { margin: 70px 10px 10px 0; position: relative; }
+.TableDetails:after { right: -10px; bottom: -10px; width: calc(100% + 10px); height: calc(100% + 10px); position: absolute; content: ""; background: #1F1F1F; z-index: -1; }
+.TableDetails table { width: 100%; background: #141414; }
+.TableDetails table tr th { color: #282828; background: #fff; padding: 38px; }
+.TableDetails table tr td { color: #FFFFFF; opacity: 0.8; padding: 15px 22px 15px 40px; }
+
+.text-center { text-align: center; }
+.tableBottom { padding-top: 50px; font-size: 16px; line-height: 24px; font-style: italic; }
+.TableDetails table tr td:not(:first-child) { border-left: 1px solid #999999; }
+.TableDetails table tr th:not(:first-child) { border-left: 1px solid #999999; }
+.TableDetails table tr:nth-child(2) td { padding-top: 40px; }
+.TableDetails table tr:last-child td { padding-bottom: 30px; }
+
+/*Form Section Css*/
+.formSection { padding: 160px 0; border-top: 1px solid #FFFFFF; }
+.FormInner { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; background: #FFFFFF; border-radius: 8px; padding: 60px; position: relative; margin-right: 10px; margin-bottom: 10px; }
+.FormInner:after { background: #D2D2D2; position: absolute; right: -10px; bottom: -10px; content: ""; width: calc(100% + 10px); height: calc(100% + 10px); z-index: -1; border-radius: 8px; }
+.FormLeft { width: 28.20%; padding-right: 40px; }
+.CommonForm { width: 71.79%; }
+
+.FormLeft .Details { border-left: 6px solid #282828; padding-left: 10px; margin-top: 20px; margin-bottom: 20px;  }
+.FormLeft .email { border-left: 6px solid #282828; padding-left: 10px; font-family: 'acumin_prosemibold'; font-size: 20px; }
+
+.formSection .SectionHeading { padding-bottom: 110px; }
+::-webkit-input-placeholder { color: #141414; opacity: 0.2; }
+:-ms-input-placeholder { color: #141414; opacity: 0.2; }
+::placeholder { color: #141414; opacity: 0.2; }
+
+.CommonForm fieldset.Column-2 { width: 50%; display: inline-block; margin-left: -6px; }
+.CommonForm fieldset { padding: 0; margin: 11px 0; border: 0; outline: none; }
+.CommonForm fieldset label, .CommonForm fieldset.Column-1 > span { font-family: 'acumin_proregular'; display: block; color: #141414; font-weight: 400; font-size: 20px; line-height: 30px; margin: 0 0 10px; padding: 0; }
+.CommonForm fieldset.Column-1 { width: 100%; display: block; }
+.CommonForm input,  .CommonForm textarea, .CommonForm select { font-family: 'acumin_proregular'; width: 100%; font-weight: 500; font-size: 24px; line-height: 36px; color: #141414; background: rgba(20,20,20,10%); border-radius: 4px; padding: 15px 20px; border: 0; outline: none; }
+.CommonForm input[type=submit], .CommonForm input[type=button], .CommonForm button { font-family: 'Poppins', sans-serif; font-weight: 500; background: #141414; border-radius: 8px 24px 8px 8px; border: 4px solid #141414; cursor: pointer; color: #FFFFFF; display: inline-block; width: auto; padding: 18px 40px; text-align: center; margin: 30px auto 0; display: inherit;  }
+.CommonForm input[type=submit]:hover, .CommonForm input[type=button]:hover, .CommonForm button:hover {  border: 4px solid transparent; }
+.CommonForm textarea { min-height: 120px; }
+.CommonForm fieldset label.container { width: auto; display: inline-block; vertical-align: middle; }
+.CommonForm fieldset.Column-2:nth-child(odd) { padding-right: 20px; }
+.CommonForm fieldset.Column-2:nth-child(even) { padding-left: 20px; }
+
+/* Customize the label (the container) */
+.CommonForm .container { display: block; position: relative; padding-left: 25px !important; padding-right:50px; color: #999999; margin-bottom: 12px; cursor: pointer; font-size: 20px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+/* Hide the browser's default checkbox */
+.CommonForm .container input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+/* Create a custom checkbox */
+.CommonForm .checkmark { position: absolute; top: 6px; left: 0; height: 18px; width: 18px; background: rgba(20,20,20,20%); border-radius: 4px;}
+/* On mouse-over, add a grey background color */
+.CommonForm .container:hover input ~ .checkmark { background-color: #ccc; }
+/* When the checkbox is checked, add a blue background */
+.CommonForm .container input:checked ~ .checkmark { background-color: #141414; }
+/* Create the checkmark/indicator (hidden when not checked) */
+.CommonForm .checkmark:after { content: ""; position: absolute; display: none; }
+/* Show the checkmark when checked */
+.CommonForm .container input:checked ~ .checkmark:after { display: block; }
+/* Style the checkmark/indicator */
+.CommonForm .container .checkmark:after { left: 6px; top: 4px; width: 3px; height: 6px; border: solid white; border-width: 0 3px 3px 0; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); }
+
+span.fieldsetBg { background: rgba(20,20,20,10%); padding: 14px 20px !important; border-radius: 4px; }
+span.fieldsetBg label { margin: 0 !important; }
+
+/*footer Section Css*/
+footer.footer { background: #fff; padding: 70px 0 0; }
+.FooterBox { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+.FooterLeft { width: 36%; padding-right: 70px; }
+
+.FooterLeft .address { display: flex; justify-content: center; align-items: baseline; flex-wrap: wrap; }
+.FooterLeft .address span { width: 29px; }
+.FooterLeft .address p { width: calc(100% - 29px); padding-left: 8px; letter-spacing: -0.7px;  }
+
+.ContactDetails { padding: 34px 0 48px; }
+.FooterRight { width: 64%; }
+.PrivacyPolicy { border-top: 1px solid #000000; padding: 38px 0; text-align: center; margin-top: 40px; }
+
+.PrivacyPolicy a { font-family: 'Poppins', sans-serif; font-weight: 500;  }
+
+/* Privacy Policy Page*/
+.PrivacyPolicy_section { padding: 35px 0 160px; }
+.PrivacyPolicy_box h1 { margin-bottom: 15px; text-align: center; }
+.PrivacyPolicy_box p, .PrivacyPolicy_box ul li { opacity: 0.8; }
+.PrivacyPolicy_box span.tagLine { font-size: 20px; opacity: 0.7; text-align: center; display: block; }
+
+.PrivacyPolicy_box p, .PrivacyPolicy_box ul li { font-size: 20px; line-height: 1.5; }
+.BottomContent_Address { font-size: 18px; width: 235px; line-height: 1.5; margin-top: 15px; opacity: 0.8; }
+
+.PrivacyPolicy_boxInner { max-width: 80%; margin: auto; padding-top: 40px; border-top: 1px solid #fff; margin-top: 40px; }
+
+
+
+@media screen and (max-width: 1600px){
+    .wrapper { max-width: 1280px; }
+
+
+    ul.tab-mnu li { width: 30%; }
+    .tab-pane { padding: 60px; }
+    .TabbingSection { padding-bottom: 130px; }
+
+    .Produces_Returns { padding: 130px 0; }
+
+    .Produces_Returns_box:after { left: 47%; top: 24%; }
+    .Produces_Returns_box:nth-child(even):after { transform: skewY(-32deg); top: 24%; }
+
+    .ManagementStrategies { padding: 130px 0; }
+
+    .TableDetails table tr th { padding: 30px; }
+    .TableDetails table tr td { padding: 15px 22px 15px 26px; }
+    .formSection { padding: 130px 0; }
+    .formSection .SectionHeading { padding-bottom: 80px; }
+
+    .PrivacyPolicy_section { padding-bottom: 130px; }
+}
+
+@media screen and (max-width: 1400px){
+    .TwoColumn_Content { padding-right: 50px; }
+}
+
+@media screen and (max-width: 1300px){
+    body { font-size: 22px; line-height: 33px; }
+
+    h1 { font-size: 42px; }
+    h2 { font-size: 42px; }
+    h3 { font-size: 30px; }
+
+    .wrapper { max-width: 1100px; }
+
+    .TabbingSection { padding-top: 0; }
+    ul.tab-mnu li { font-size: 28px; padding: 24px; }
+    ul.tab-mnu li img { width: 46px; }
+    .tab-pane { padding: 50px; gap:50px; }
+    .TabbLeft, .TabbRight { width: calc(50% - 26px); }
+    .TabbingSection { padding-bottom: 100px; }
+
+    .Produces_Returns { padding: 100px 0; }
+    .SectionHeading { padding-bottom: 60px; }
+
+    .Produces_Returns_inner { gap: 30px; }
+    .Produces_Returns_box { width: calc(25% - 23px); }
+
+    .Content { padding-top: 50px; }
+    .Produces_Returns_box:nth-child(even) { padding-top: 170px; }
+
+    .SectionHeading p { margin-top: 34px; }
+
+    .ManagementStrategies { padding: 100px 0; }
+
+    .formSection { padding: 100px 0; }
+    .FormInner { padding: 45px; }
+    .FormLeft { width: 36%; }
+    .CommonForm { width: 64%; }
+
+    .CommonForm input, .CommonForm textarea, .CommonForm select { font-size: 22px; padding: 12px 16px; }
+    .CommonForm fieldset label, .CommonForm fieldset.Column-1 > span { font-size: 18px; }
+    .CommonForm input[type=submit], .CommonForm input[type=button], .CommonForm button { padding: 12px 30px; }
+
+    .FooterRight { width: 55%; }
+    .FooterLeft { width: 45%; padding-right: 40px; }
+    .FooterLeft p { margin-top: 0; }
+
+
+    .TwoColumn_img { width: 55%; }
+    .TwoColumn_Content { padding-right: 30px; width: 45%; }
+    .TableDetails { margin-top: 50px; }
+
+    .TableDetails table tr th { padding: 22px; }
+    .TableDetails table tr td { padding: 12px 16px 12px 20px; }
+
+    .PrivacyPolicy { padding: 26px 0; }
+
+    .PrivacyPolicy_section { padding-bottom: 100px; }
+ 
+}
+
+@media screen and (max-width: 1080px){
+
+    body { font-size: 20px; line-height: 30px; }
+
+    h1 { font-size: 38px; }
+    h2 { font-size: 38px; }
+    h3 { font-size: 26px; }
+    h4 { font-size: 22px; }
+    h5 { font-size: 20px; }
+    h6 { font-size: 16px; }
+
+    .wrapper { max-width: 950px; }
+
+    .button a { font-size: 20px; padding: 18px 30px; }
+
+    ul.tab-mnu { padding: 0; }
+    ul.tab-mnu li { width: 29%; font-size: 26px; padding: 20px; }
+
+    .tab-pane { padding: 40px; gap: 30px; }
+    .TabbLeft, .TabbRight { width: calc(50% - 16px); }
+
+    ul.tab-mnu li.active:after { right: -8px; }
+    .TabbLeft ul li { padding: 0 0 0 34px; }
+    .tab-cont { padding-right: 6px; padding-bottom: 6px; }
+    .TabbingSection .button { padding-top: 50px; }
+
+    .TabbingSection { padding-bottom: 80px; }
+    .Produces_Returns { padding: 80px 0; }
+
+    .SectionHeading { max-width: 94%; padding-bottom: 45px; }
+    .SectionHeading p { margin-top: 26px; }
+    .SectionHeading h2 span img { width: 64px; }
+
+    .Produces_Returns_box:after { left: 61%; top: 25%; transform: skewY(36deg); }
+    .Produces_Returns_box:nth-child(even):after {  top: 22%; }
+    .Produces_Returns_box:nth-child(even) .StepNumber { margin-left: 40px; margin-bottom: -14px; }
+    .Content { padding-top: 30px; }
+
+    .TeamMemberDetails { width: 70%; }
+    .TeamMemberimg { width: 30%; }
+    .NamePosition h3 { margin-bottom: 6px; }
+
+    .ManagementStrategies, .formSection { padding: 80px 0; }
+    .formSection .SectionHeading { padding-bottom: 50px; }
+
+    .TeamEmail { margin-top: 15px; margin-bottom: 26px; }
+    .TeamBox { padding: 30px 0; }
+    .teamSection { padding: 30px 0 60px; }
+
+    .CommonForm fieldset.Column-2:nth-child(odd) { padding-right: 10px; }
+    .CommonForm fieldset.Column-2:nth-child(even) { padding-left: 10px; }
+
+    .FormLeft { width: 44%; }
+    .CommonForm { width: 56%; }
+
+    .CommonForm input, .CommonForm textarea, .CommonForm select { font-size: 20px; padding: 10px 16px; }
+    .CommonForm input[type=submit], .CommonForm input[type=button], .CommonForm button { padding: 9px 24px; }
+    .CommonForm .container { padding-right: 20px; }
+    .CommonForm fieldset label, .CommonForm fieldset.Column-1 > span { margin: 0 0 4px; }
+
+    footer.footer { padding: 60px 0 0;  }
+    .PrivacyPolicy { padding: 20px 0; }
+
+    .PrivacyPolicy_section { padding-bottom: 80px; }
+    .PrivacyPolicy_boxInner { max-width: 90%; }
+    .PrivacyPolicy_box p, .PrivacyPolicy_box ul li { font-size: 18px; }
+
+}
+
+@media screen and (max-width: 1023px){
+
+    body { font-size: 18px; line-height: 27px; }
+
+    h1 { font-size: 32px; }
+    h2 { font-size: 32px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .wrapper { max-width: 100%; padding: 0 20px; }
+
+    * + p { margin-top: 15px; }
+    .button a { font-size: 18px; padding: 10px 24px; }
+    .button a:after { left: -8px; top: -8px; }
+
+    ul.tab-mnu li { font-size: 20px; padding: 14px; line-height: 30px;}
+    .tab-pane { padding: 30px; gap: 20px; }
+    ul.tab-mnu li img { width: 36px; }
+    .TabbLeft, .TabbRight { width: 100%; }
+
+    .TabbingSection { padding-bottom: 50px; }
+    .Produces_Returns { padding: 50px 0; }
+    .Produces_Returns_box { width: calc(50% - 15px); }
+    .Produces_Returns_box:after { left: 32%; top: 30%; transform: skewY(19deg); }
+    .StepNumber { margin-left: -4px; margin-bottom: -43px; }
+    .Produces_Returns_box:nth-child(even) { padding-top: 140px; }
+    .Produces_Returns_box:nth-child(even):after { content: none; }
+
+    .TeamMemberDetails { padding-left: 20px; width: 65%; }
+    .TeamMemberimg { width: 35%; }
+    .TeamEmail a { font-size: 18px; }
+
+    .TwoColumn_Content { padding-right: 0; width: 100%; }
+    .TwoColumn_img { width: 100%; }
+    .TableDetails table tr th { padding: 12px; }
+    .TableDetails table tr td { padding: 10px 10px 10px 10px; }
+    .TableDetails table tr:nth-child(2) td { padding-top: 24px; }
+    .TableDetails table tr:last-child td { padding-bottom: 20px; }
+    .ManagementStrategies, .formSection { padding: 50px 0;  }
+
+    .SectionHeading h2 span img { width: 50px; }
+    .formSection .SectionHeading { padding-bottom: 40px; }
+
+    .FormInner { padding: 30px; }
+    .FormLeft { width: 100%; padding-right: 0; text-align: center; }
+    .FormLeft .Details { border-left: 0; padding-left: 0; margin-bottom: 0; }
+    .FormLeft .email { padding-left: 0; border-left: 0; }
+
+    .CommonForm { width: 100%; margin-top: 30px; }
+    .CommonForm .container { font-size: 18px; }
+    .CommonForm input, .CommonForm textarea, .CommonForm select { font-size: 18px; }
+    .FormLeft .email { font-size: 18px; }
+
+    .FooterLeft { width: 100%; padding-right: 0; }
+    .ContactDetails { padding: 24px 0; }
+    .FooterRight { width: 100%; margin-top: 30px; }
+    .FooterLogo img { width: 90px; }
+
+    .PrivacyPolicy { padding: 15px 0; margin-top: 30px; }
+
+    .PrivacyPolicy_section { padding-bottom: 50px; padding-top: 15px; }
+    .PrivacyPolicy_boxInner { max-width: 100%; }
+    .PrivacyPolicy_box p, .PrivacyPolicy_box ul li { font-size: 16px; }
+    .PrivacyPolicy_boxInner { padding-top: 30px; margin-top: 30px; }
+    .BottomContent_Address { font-size: 16px; }
+    .PrivacyPolicy_box span.tagLine { font-size: 18px; }
+}
+
+@media screen and (max-width: 640px){
+
+    body { font-size: 16px; line-height: 27px; }
+    .stylelist ul, ul.stylelist { padding: 0 0 0 30px; }
+    .stylelist ul li, ul.stylelist li { padding: 4px 0; }
+    .stylelist ul li:before, ul.stylelist li:before { top: 16px; left: -18px; }
+
+    .button a { font-size: 16px; padding: 8px 12px; line-height: 24px; }
+    .button a:after { left: -6px; top: -8px; }
+
+    .tab-pane { padding: 20px; }
+    ul.tab-mnu li { font-size: 16px; margin: 0; width: calc(100% - 24px); margin-left: 10px; margin-right: 6px; }
+    ul.tab-mnu li.active:after { right: -6px; }
+    .TabbingSection .button { padding-top: 30px; }
+    .TabbingSection { padding-bottom: 40px; }
+
+    .Produces_Returns { padding: 40px 0; }
+    .SectionHeading { max-width: 100%; padding-bottom: 30px; }
+    .SectionHeading h2 span { padding: 0 10px; }
+    .SectionHeading p { margin-top: 18px; }
+
+    .Produces_Returns_box { width: 100%; text-align: center; }
+    .Produces_Returns_box:after { content: none; }
+    .Produces_Returns_box:nth-child(even) { padding-top: 30px; }
+
+    .Produces_Returns_box:nth-child(even) .StepNumber, .StepNumber { margin-left: 51px; margin-bottom: -40px; text-align: left; }
+    .Produces_Returns_box .Content h6:after { left: 50%; transform: translateX(-50%); }
+
+    .TeamMemberimg { width: 100%; }
+    .TeamMemberDetails { margin-top: 20px; padding-left: 0; width: 100%; }
+
+    .teamSection { padding: 10px 0 40px; }
+    .TeamEmail { margin-top: 10px; margin-bottom: 10px; }
+    .TeamEmail a { font-size: 16px; }
+
+    .TeamBox:nth-child(even) { direction: unset; }
+    .TeamBox:nth-child(even) .TeamEmail { border-left: 6px solid #282828; border-right: 0; padding-left: 10px; padding-right: 0; }
+    .TeamBox:nth-child(even) .NamePosition { border-left: 6px solid #282828; border-right: 0; padding-left: 10px; padding-right: 0; }
+    .TableDetails { margin-top: 30px; width: 100%; overflow-x: auto; }
+    .TableDetails table { width: 788px; }
+    .TableDetails table tr:nth-child(2) td { padding-top: 14px; }
+    .TableDetails table tr:last-child td { padding-bottom: 14px; }
+    .TwoColumn { margin-right: 6px; }
+    .TwoColumn_img:after { width: calc(100% + 6px); height: calc(100% + 6px); right: -6px; bottom: -6px; }
+    .tableBottom { padding-top: 30px; }
+
+    .CommonForm fieldset.Column-2 { width: 100%; margin-left: 0; }
+    .CommonForm fieldset.Column-2:nth-child(odd) { padding-right: 0; }
+    .CommonForm fieldset.Column-2:nth-child(even) { padding-left: 0px; }
+    .FormInner { padding: 20px; margin-right: 6px; margin-bottom: 6px; }
+    .FormInner:after { right: -6px; bottom: -6px; width: calc(100% + 6px); height: calc(100% + 6px); } 
+    .CommonForm fieldset { margin: 6px 0; }
+    .CommonForm input, .CommonForm textarea, .CommonForm select { font-size: 16px; padding: 8px 14px; }
+    .CommonForm fieldset label, .CommonForm fieldset.Column-1 > span { font-size: 16px; }
+    .CommonForm textarea { min-height: 60px; }
+    .CommonForm .container { font-size: 16px; }
+    .CommonForm input[type=submit], .CommonForm input[type=button], .CommonForm button { padding: 4px 20px; }
+
+    footer.footer { padding: 40px 0 0; }
+    .FooterLogo img { width: 60px; }
+
+    .PrivacyPolicy_section { padding-top: 0; }
+    .BottomContent_Address { font-size: 14px; }
+}
